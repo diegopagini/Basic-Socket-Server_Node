@@ -4,10 +4,12 @@
 	"description": "Socket server",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev": "nodemon index.js",
+		"start": "node index.js"
 	},
 	"author": {
-		"name": "Diego Pagini"
+		"name": "Diego Pagini",
+		"email": "diegopaginidev@gmail.com"
 	},
 	"license": "MIT",
 	"dependencies": {
