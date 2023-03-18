@@ -1,12 +1,15 @@
 /** @format */
 
 const BandList = require('./band-list');
+const TicketList = require('./ticket-list');
 
 class Sockets {
 	constructor(io) {
 		this.io = io;
 		this.bandList = new BandList();
-		// Listen socket events:
+		this.ticketList = new TicketList();
+		// Listen socket events
+
 		this.socketEvents();
 	}
 
@@ -41,9 +44,13 @@ class Sockets {
 				this.bandList.addBand(name);
 				this.io.emit('current-bands', this.bandList.getBands());
 			});
+
+			// On request ticket.
+			socket.on('request-ticket', (_, callback) => {
+				callback(this.ticketList.createTicket());
+			});
 		});
 	}
-	git;
 }
 
 module.exports = Sockets;
