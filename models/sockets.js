@@ -54,6 +54,8 @@ class Sockets {
 			socket.on('next-ticket', ({ agent, desk }, callback) => {
 				const ticket = this.ticketList.assignTicket(agent, desk);
 				callback(ticket);
+
+				this.io.emit('ticket-assigned', this.ticketList.lastThirteen);
 			});
 		});
 	}
